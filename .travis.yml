@@ -6,4 +6,4 @@ before_install:
 - gem install xcpretty -N --no-ri --no-rdoc
 script:
 - set -o pipefail
-- xcodebuild clean test -project todolist.xcodeproj -scheme todolist -destination "platform=iOS Simulator,name=iPhone 6 Plus" -enableCodeCoverage YES | xcpretty
+- xcodebuild clean test -project todolist.xcodeproj -scheme todolist -sdk iphonesimulator9.3 -enableCodeCoverage YES
