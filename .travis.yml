@@ -1,1 +1,4 @@
 language: objective-c
+xcode_project: todolist.xcodeproj
+xcode_scheme: todolist
+osx_image: xcode7.3
