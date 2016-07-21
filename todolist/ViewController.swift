@@ -18,8 +18,7 @@ class ViewController: UITableViewController, AddToDoFormDelegate {
     func addButtonAction() {
         CATransaction.begin()
         
-        let addForm = AddToDoForm()
-        addForm.delegate = self
+        let addForm = AddToDoForm(delegate: self)
         
         self.presentViewController(addForm.alert, animated: true, completion: nil)
         

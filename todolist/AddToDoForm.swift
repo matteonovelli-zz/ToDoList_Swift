@@ -16,28 +16,27 @@ protocol AddToDoFormDelegate {
 
 class AddToDoForm {
 
-    var delegate: AddToDoFormDelegate?
+    var delegate: AddToDoFormDelegate
     var alert: UIAlertController
     
     // MARK: Lifecycle
     
-    init() {
+    init(delegate: AddToDoFormDelegate) {
         alert = UIAlertController(title: "To Do",
                                   message: "Write what you have to do",
                                   preferredStyle: .Alert)
+        self.delegate = delegate
         self.createActions()
     }
     
     // MARK: Private methods
     
     private func doneHandler(alert: UIAlertAction) {
-        guard let text = self.alert.textFields?[0].text else { return }
+        let text = self.alert.textFields?[0].text
         
-        guard text.characters.count > 0 else { return }
-        
-        guard let delegate = self.delegate else { return }
-        
-        delegate.createNewToDo(text)
+        if text!.characters.count > 0 {
+            delegate.createNewToDo(text!)
+        }
     }
     
     private func createActions() {
@@ -45,7 +44,7 @@ class AddToDoForm {
             txt.placeholder = "Things to do..."
         }
         
-        let doneAction: UIAlertAction = UIAlertAction(title: "Done",
+        let doneAction: UIAlertAction = UIAlertAction(title: "Add",
                                                       style: .Default,
                                                       handler: doneHandler)
         let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel",
