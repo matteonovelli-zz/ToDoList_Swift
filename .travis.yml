@@ -1,1 +1,3 @@
 language: objective-c
+xcode_project: todolist.xcodeproj
+xcode_scheme: todolistUnitTests
