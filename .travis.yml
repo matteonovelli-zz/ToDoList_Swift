@@ -6,4 +6,6 @@ before_install:
 - gem install xcpretty -N --no-ri --no-rdoc
 script:
 - set -o pipefail
-- xcodebuild clean test -project todolist.xcodeproj -scheme todolist -sdk iphonesimulator9.3 -enableCodeCoverage YES
+- xcodebuild build test -project todolist.xcodeproj -scheme todolist -sdk iphonesimulator9.3 -enableCodeCoverage YES | xcpretty
+after_success:
+- bash <(curl -s https://codecov.io/bash)
