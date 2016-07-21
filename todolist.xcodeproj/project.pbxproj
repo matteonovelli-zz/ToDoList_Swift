@@ -171,7 +171,6 @@
 					};
 					95A32DF61D35173300001C15 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = Q3T4Y7N7TY;
 					};
 				};
 			};
