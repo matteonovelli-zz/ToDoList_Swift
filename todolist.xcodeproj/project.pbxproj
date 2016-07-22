@@ -16,6 +16,8 @@
 		95786EFC1D4212FF00F006C7 /* MockToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95786EFB1D4212FF00F006C7 /* MockToDoList.swift */; };
 		95786EFE1D42297A00F006C7 /* MockToDoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95786EFD1D42297A00F006C7 /* MockToDoService.swift */; };
 		95786F001D422C5900F006C7 /* MockAddToDoForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95786EFF1D422C5900F006C7 /* MockAddToDoForm.swift */; };
+		95786F041D423B7700F006C7 /* AddToDoFormTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95786F031D423B7700F006C7 /* AddToDoFormTests.swift */; };
+		95786F061D423BFE00F006C7 /* MockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95786F051D423BFE00F006C7 /* MockViewController.swift */; };
 		95A32DFB1D35173400001C15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A32DFA1D35173400001C15 /* AppDelegate.swift */; };
 		95A32DFD1D35173400001C15 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A32DFC1D35173400001C15 /* ViewController.swift */; };
 		95A32E001D35173400001C15 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95A32DFE1D35173400001C15 /* Main.storyboard */; };
@@ -56,6 +58,8 @@
 		95786EFB1D4212FF00F006C7 /* MockToDoList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockToDoList.swift; path = Mocks/MockToDoList.swift; sourceTree = "<group>"; };
 		95786EFD1D42297A00F006C7 /* MockToDoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockToDoService.swift; path = Mocks/MockToDoService.swift; sourceTree = "<group>"; };
 		95786EFF1D422C5900F006C7 /* MockAddToDoForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockAddToDoForm.swift; path = Mocks/MockAddToDoForm.swift; sourceTree = "<group>"; };
+		95786F031D423B7700F006C7 /* AddToDoFormTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToDoFormTests.swift; sourceTree = "<group>"; };
+		95786F051D423BFE00F006C7 /* MockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockViewController.swift; path = Mocks/MockViewController.swift; sourceTree = "<group>"; };
 		95A32DF71D35173300001C15 /* todolist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todolist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95A32DFA1D35173400001C15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95A32DFC1D35173400001C15 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +105,7 @@
 				950A1E7C1D3F556F00D1650D /* ToDoListTests.swift */,
 				952C452F1D3F6AC700F3AAC8 /* ToDoServiceTests.swift */,
 				95AF17401D41F6A40042CB35 /* ViewControllerTests.swift */,
+				95786F031D423B7700F006C7 /* AddToDoFormTests.swift */,
 				950A1E7E1D3F556F00D1650D /* Info.plist */,
 			);
 			path = todolistUnitTests;
@@ -113,6 +118,7 @@
 				95786EFB1D4212FF00F006C7 /* MockToDoList.swift */,
 				95786EFD1D42297A00F006C7 /* MockToDoService.swift */,
 				95786EFF1D422C5900F006C7 /* MockAddToDoForm.swift */,
+				95786F051D423BFE00F006C7 /* MockViewController.swift */,
 			);
 			name = Mocks;
 			sourceTree = "<group>";
@@ -284,6 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95786F061D423BFE00F006C7 /* MockViewController.swift in Sources */,
 				950A1E7D1D3F556F00D1650D /* ToDoListTests.swift in Sources */,
 				95786EFC1D4212FF00F006C7 /* MockToDoList.swift in Sources */,
 				952C45341D3F895300F3AAC8 /* ToDoItemTests.swift in Sources */,
@@ -292,6 +299,7 @@
 				95786F001D422C5900F006C7 /* MockAddToDoForm.swift in Sources */,
 				952C45301D3F6AC700F3AAC8 /* ToDoServiceTests.swift in Sources */,
 				95786EFE1D42297A00F006C7 /* MockToDoService.swift in Sources */,
+				95786F041D423B7700F006C7 /* AddToDoFormTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

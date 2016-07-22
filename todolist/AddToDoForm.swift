@@ -40,10 +40,7 @@ class AddToDoForm: NSObject {
     
     func doneHandler(action: UIAlertAction) {
         let text = self.alert.textFields?[0].text
-        
-        if text!.characters.count > 0 {
-            delegate.createNewToDo(text!)
-        }
+        delegate.createNewToDo(text!)
     }
     
     private func createActions() {
