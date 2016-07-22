@@ -35,11 +35,12 @@ class AddToDoForm: NSObject {
     // MARK: Methods
     
     func presentFromViewController(viewController: UIViewController) {
-        viewController.presentViewController(self.alert, animated: true, completion: nil)
+        alert.textFields?[0].text = ""
+        viewController.presentViewController(alert, animated: true, completion: nil)
     }
     
     func doneHandler(action: UIAlertAction) {
-        let text = self.alert.textFields?[0].text
+        let text = alert.textFields?[0].text
         delegate.createNewToDo(text!)
     }
     

@@ -12,13 +12,13 @@ import UIKit
 class MockViewController: ViewController {
     
     var createNewToDoCalled = false
-    var presentViewControllerCalled = false
+    var presentedAlertController: UIAlertController!
     
     override func createNewToDo(description: String) {
         createNewToDoCalled = true
     }
     
     override func presentViewController(viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?) {
-        presentViewControllerCalled = true
+        presentedAlertController = viewControllerToPresent as! UIAlertController
     }
 }

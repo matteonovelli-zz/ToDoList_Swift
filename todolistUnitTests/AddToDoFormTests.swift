@@ -23,7 +23,16 @@ class AddToDoFormTests: XCTestCase {
     
     func testPresentFromViewController() {
         sut.presentFromViewController(mockViewController)
-        XCTAssertTrue(mockViewController.presentViewControllerCalled)
+        let alert = mockViewController.presentedAlertController
+        XCTAssertNotNil(alert)
+        XCTAssertEqual(alert.title, "To Do")
+        XCTAssertEqual(alert.message, "Write what you have to do")
+        XCTAssertTrue(alert.textFields?.count == 1)
+        XCTAssertEqual(alert.textFields?[0].text, "")
+        XCTAssertEqual(alert.textFields?[0].placeholder, "Things to do...")
+        XCTAssertTrue(alert.actions.count == 2)
+        XCTAssertEqual(alert.actions[0].title, "Add")
+        XCTAssertEqual(alert.actions[1].title, "Cancel")
     }
     
     func testDoneHandler() {
