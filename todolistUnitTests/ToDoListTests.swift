@@ -11,33 +11,29 @@ import XCTest
 
 class ToDoListTests: XCTestCase {
     
-    var list: ToDoList!
+    var sut: ToDoList!
     
     override func setUp() {
         super.setUp()
         
-        list = ToDoList()
+        sut = ToDoList()
+    }
+    
+    func testInit() {
+        XCTAssertTrue(sut.items.count == 0)
     }
     
     func testAddItem() {
-        list.addItem("Item1")
-        XCTAssertEqual(list.items.count, 1)
-        
-        let item = list.items[0]
-        XCTAssertEqual(item.description, "Item1")
-        XCTAssertEqual(item.state, ToDoItemStateType.TODO)
+        let item = ToDoItem("")
+        sut.addItem(item)
+        XCTAssertTrue(sut.items.count == 1)
+        XCTAssertTrue(sut.items[0].isEqual(item))
     }
     
     func testRemoveItem() {
-        list.addItem("item1")
-        list.removeItem(atIndex: 0)
-        XCTAssertEqual(list.items.count, 0)
-    }
-    
-    func testRemoveItemOutOfBounds() {
-        list.addItem("item1")
-        list.removeItem(atIndex: 1)
-        XCTAssertEqual(list.items.count, 1)
+        sut.addItem(ToDoItem(""))
+        sut.removeItem(atIndex: 0)
+        XCTAssertTrue(sut.items.count == 0)
     }
     
 }

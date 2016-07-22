@@ -10,27 +10,32 @@ import XCTest
 @testable import todolist
 
 class ToDoServiceTests: XCTestCase {
-
-    func testToDoListService() {
-        let service = ToDoService()
+    
+    let mockList = MockToDoList()
+    var sut: ToDoService!
+    
+    override func setUp() {
+        super.setUp()
         
-        let list: ToDoList = service.toDoList
-        XCTAssertEqual(list.items.count, 0)
+        sut = ToDoService(toDoList: mockList)
+    }
+    
+    func testAddToDo() {
+        sut.addToDo("")
+        XCTAssertTrue(mockList.addItemCalled)
+    }
+    
+    func testRemoveToDo() {
+        sut.removeToDo(atIndex: 0)
+        XCTAssertTrue(mockList.removeItemCalled)
+    }
+    
+    func testMoveToDoToNextState() {
+        sut.moveToDoToNextState(index: 0)
         
-        service.addToDo("Item1")
-        XCTAssertEqual(list.items.count, 1)
+        let mockItem = mockList.items[0] as! MockToDoItem
         
-        service.moveToDoToNextState(index: 0)
-        XCTAssertEqual(list.items[0].state, ToDoItemStateType.InProgress)
-        
-        service.moveToDoToNextState(index: 0)
-        XCTAssertEqual(list.items[0].state, ToDoItemStateType.Done)
-        
-        service.moveToDoToNextState(index: 0)
-        XCTAssertEqual(list.items[0].state, ToDoItemStateType.Finished)
-        
-        service.removeToDo(atIndex: 0)
-        XCTAssertEqual(list.items.count, 0)
+        XCTAssertTrue(mockItem.nextStateCalled)
     }
 
 }

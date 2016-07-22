@@ -54,15 +54,16 @@ enum ToDoItemStateType: CustomStringConvertible {
     }
 }
 
-class ToDoItem {
-    var description: String
-    var state: ToDoItemStateType = .TODO
+class ToDoItem: NSObject {
+    var message: String
+    var state: ToDoItemStateType
     
-    init(_ description: String) {
-        self.description = description
+    init(_ message: String) {
+        self.message = message
+        state = .TODO
     }
     
     func nextState() {
-        self.state.setNext()
+        state.setNext()
     }
 }

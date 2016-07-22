@@ -14,10 +14,10 @@ protocol AddToDoFormDelegate {
     
 }
 
-class AddToDoForm {
+class AddToDoForm: NSObject {
 
     var delegate: AddToDoFormDelegate
-    var alert: UIAlertController
+    private var alert: UIAlertController
     
     // MARK: Lifecycle
     
@@ -26,12 +26,19 @@ class AddToDoForm {
                                   message: "Write what you have to do",
                                   preferredStyle: .Alert)
         self.delegate = delegate
+        
+        super.init()
+        
         self.createActions()
     }
     
-    // MARK: Private methods
+    // MARK: Methods
     
-    private func doneHandler(alert: UIAlertAction) {
+    func presentFromViewController(viewController: UIViewController) {
+        viewController.presentViewController(self.alert, animated: true, completion: nil)
+    }
+    
+    func doneHandler(action: UIAlertAction) {
         let text = self.alert.textFields?[0].text
         
         if text!.characters.count > 0 {

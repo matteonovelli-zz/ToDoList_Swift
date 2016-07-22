@@ -15,23 +15,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-//        guard normalExecutionPath() else {
-//            window = nil
-//            return false
-//        }
-        
         let navigationController: UINavigationController = window?.rootViewController as! UINavigationController
         let rootController: ViewController =  navigationController.viewControllers[0] as! ViewController
         
-        let toDoService = ToDoService()
-        rootController.service = toDoService    
+        let toDoList = ToDoList()
+        let toDoService = ToDoService(toDoList: toDoList)
+        let addToDoForm = AddToDoForm(delegate: rootController)
+        
+        rootController.service = toDoService
+        rootController.addToDoForm = addToDoForm
         
         return true
     }
-    
-//    private func normalExecutionPath() -> Bool {
-//        return NSClassFromString("XCTestCase") == nil
-//    }
 
 }
 

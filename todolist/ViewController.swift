@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UITableViewController, AddToDoFormDelegate {
 
     var service: ToDoService!
+    var addToDoForm: AddToDoForm!
     
     // MARK: Actions
     
@@ -18,9 +19,7 @@ class ViewController: UITableViewController, AddToDoFormDelegate {
     func addButtonAction() {
         CATransaction.begin()
         
-        let addForm = AddToDoForm(delegate: self)
-        
-        self.presentViewController(addForm.alert, animated: true, completion: nil)
+        addToDoForm.presentFromViewController(self)
         
         CATransaction.setCompletionBlock() {
             self.tableView.setEditing(false, animated: true)
@@ -31,27 +30,30 @@ class ViewController: UITableViewController, AddToDoFormDelegate {
     
     // MARK: Private methods
 
-    private func deleteToDo(sender: UITableViewRowAction, index: NSIndexPath) {
+    func createAddToDoForm() -> AddToDoForm {
+        return AddToDoForm(delegate: self)
+    }
+    
+    func deleteToDo(sender: UITableViewRowAction, index: NSIndexPath) {
         self.deleteToDo(index.row)
         tableView.deleteRowsAtIndexPaths([index], withRowAnimation: .Right)
     }
     
-    private func moveToDoToNextState(sender: UITableViewRowAction, index: NSIndexPath) {
+    func moveToDoToNextState(sender: UITableViewRowAction, index: NSIndexPath) {
         self.moveToDoToNextState(index.row)
         tableView.reloadRowsAtIndexPaths([index], withRowAnimation: .Right)
     }
     
     private func deleteToDo(index: Int) {
-        self.service.removeToDo(atIndex: index)
+        service.removeToDo(atIndex: index)
     }
     
     private func moveToDoToNextState(index: Int) {
-        let item = service.toDoList.items[index]
-        item.nextState()
+        service.moveToDoToNextState(index: index)
     }
     
     private func addToDo(description: String) {
-        self.service.addToDo(description)
+        service.addToDo(description)
     }
     
     // MARK: AddToDoAlertDelegate
@@ -72,7 +74,7 @@ class ViewController: UITableViewController, AddToDoFormDelegate {
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         let item = service.toDoList.items[indexPath.row]
         
-        cell.textLabel?.text = item.description
+        cell.textLabel?.text = item.message
         cell.detailTextLabel?.text = item.state.description
                 
         return cell
@@ -89,9 +91,9 @@ class ViewController: UITableViewController, AddToDoFormDelegate {
         
         if item.state.next != .Finished {
             return [deleteAction, nextStateAction]
-        } else {
-            return [deleteAction]
         }
+        
+        return [deleteAction]
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

@@ -10,16 +10,17 @@ import Foundation
 
 class ToDoList {
 
-    var items: [ToDoItem] = []
+    var items: [ToDoItem]
     
-    func addItem(description: String) {
-        items.append(ToDoItem(description))
+    init() {
+        self.items = []
+    }
+    
+    func addItem(item: ToDoItem) {
+        items.append(item)
     }
     
     func removeItem(atIndex index: Int) {
-        guard items.count > index else {
-            return
-        }
         items.removeAtIndex(index)
     }
         

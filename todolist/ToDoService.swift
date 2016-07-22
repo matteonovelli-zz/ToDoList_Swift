@@ -12,12 +12,12 @@ class ToDoService {
     
     var toDoList: ToDoList
     
-    init() {
-        toDoList = ToDoList()
+    init(toDoList: ToDoList) {
+        self.toDoList = toDoList
     }
     
     func addToDo(description: String) {
-        toDoList.addItem(description)
+        toDoList.addItem(ToDoItem(description))
     }
     
     func removeToDo(atIndex index: Int) {
