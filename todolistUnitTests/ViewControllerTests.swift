@@ -11,15 +11,6 @@ import XCTest
 
 class ViewControllerTests: XCTestCase {
     
-    class mockAddFormDelegate: AddToDoFormDelegate {
-        
-        var createNewToDo = false
-        
-        func createNewToDo(description: String) {
-            createNewToDo = true
-        }
-    }
-    
     var sut: ViewController!
     var mockService: MockToDoService!
     var mockAddToDoForm: MockAddToDoForm!
@@ -28,7 +19,7 @@ class ViewControllerTests: XCTestCase {
         super.setUp()
         
         mockService = MockToDoService(toDoList: MockToDoList())
-        mockAddToDoForm = MockAddToDoForm(delegate: mockAddFormDelegate())
+        mockAddToDoForm = MockAddToDoForm(delegate: MockViewController())
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let navigationController = storyboard.instantiateInitialViewController() as! UINavigationController
